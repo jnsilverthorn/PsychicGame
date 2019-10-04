@@ -1,21 +1,24 @@
 <!DOCTYPE html>
-<html lang = "en">
+<html lang="en">
     <head>
-        <meta charset = "UTF-8">
-        <link rel = "stylesheet" href = "assets/css/reset.css">
-        <link rel = "stylesheet" href = "assets/css/style.css">
-        <script type = "text/javascript" src = "assets/javascript/game.js"></script>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="assets/css/reset.css">
+        <link rel="stylesheet" href="assets/css/style.css">
+        
     </head>
 
     <body>
-        <h1 class = "title">The Psychic Game</h1>
+        <h1 class="title">The Psychic Game</h1>
 
-        <div class = "intro">Guess what letter I'm thinking of...</div>
-        <div class = "instr">Press any letter A-Z to begin guessing!</div>
-        <div class = "scoreW"></div>
-        <div class = "scoreL"></div>
+        <div id="instr">Guess what letter I'm thinking of...</div>
+        <div id="intro">Press any letter A-Z to begin guessing!</div>
+        <div id="scoreW"></div>
+        <div id="scoreL"></div>
 
-        <div class = "rem"></div>
-        <div class = "guess"></div>
+        <div id="rem"></div>
+        <div id="guess"></div>
+
+        <button id="reset">Click to start again!</button>
     </body>
+    <script type="text/javascript" src="assets/javascript/game.js"></script>
 </html>

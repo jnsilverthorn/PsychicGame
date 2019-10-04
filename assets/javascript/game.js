@@ -2,18 +2,21 @@ var compChoice = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m
 
 var wins = 0;
 var losses = 0;
-var remainingG = 0;
+var guessesSoFar = 0;
 var guesses = [];
 
-var score1 = document.getElementsByClassName("scoreW");
-var score2 = document.getElementsByClassName("scoreL");
-var remG = document.getElementsByClassName("rem");
-var guess1 = document.getElementsByClassName("guess");
-var introC = document.getElementsByClassName("intro");
+var score1 = document.getElementById("scoreW");
+var score2 = document.getElementById("scoreL");
+var remG = document.getElementById("rem");
+var guess1 = document.getElementById("guess");
+var introC = document.getElementById("intro");
+var resetbtn = document.getElementById("reset");
 
 var resetG = function() {
-    remainingG = 0;
+    guessesSoFar = 0;
     guesses = [];
+    remG.innerText = "Remaining Guesses: " + (9 - guessesSoFar);
+    guess1.innerText = "Your Guesses: " + guesses;
 }
 
 var resetCC = function() {
@@ -26,35 +29,42 @@ resetG();
 
 document.onkeyup = function(event) { 
     var userInput = event.key;
-    guesses.push(String.fromCharCode(userInput));
+    guesses.push(userInput);
+    guess1.innerText = "Your Guesses: " + guesses;
         if (userInput === randChoice) {
             console.log("Wins:" + (1 + wins));
             resetCC();
-            resetG();
+
             wins++;
+            score1.innerText = "Wins: " + wins;
         }
         
         if (userInput !== randChoice) {
-            console.log((9 - remainingG));
             console.log(guesses);
-            remainingG++;
+            guessesSoFar++;
+            console.log((9 - guessesSoFar));
+            remG.innerText = "Remaining Guesses: " + (9 - guessesSoFar);
         }
         
-        if (remainingG === 10) {
+        if (guessesSoFar === 9) {
             console.log("Losses: " + (1 + losses));
-            resetG();
+
             resetCC();
             losses++;
+            score2.innerText = "Losses: " + losses;
+        }
+
+        if (userInput) {
+            introC.innerText = "";
         }
 };
     
-introC.textContent = "#";
-score1.textContent = "Wins: " + wins;
-score2.textContent = "Losses: " + losses;
-remG.textContent = "Remaining Guesses: " + (9 - remainingG);
-guess1.textContent = "Your Guesses: " + guesses;
+score1.innerText = "Wins: " + wins;
+score2.innerText = "Losses: " + losses;
+remG.innerText = "Remaining Guesses: " + (9 - guessesSoFar);
+guess1.innerText = "Your Guesses: " + guesses;
 
-
+resetbtn.onclick = resetG;
 
 
 
