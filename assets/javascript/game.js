@@ -48,10 +48,10 @@ document.onkeyup = function(event) {
         
         if (guessesSoFar === 9) {
             console.log("Losses: " + (1 + losses));
-
             resetCC();
             losses++;
             score2.innerText = "Losses: " + losses;
+            return;
         }
 
         if (userInput) {
